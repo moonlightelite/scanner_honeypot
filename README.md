@@ -57,6 +57,11 @@ ip netns exec nsudp screen -S llm_honeypot python3 -m honeypot \
     --load-plugin honeypot.plugins.socks5 \
     --load-plugin honeypot.plugins.mikrotik_mndp \
     --load-plugin honeypot.plugins.llm_fallback
+
+# If you put the sandbox in a namespace and can't access the web interface remotely....
+ip netns exec nsudp iptables -t mangle -I PREROUTING -s <Your desktop's public IP> -j ACCEPT
+ip netns exec nsudp socat TCP-LISTEN:8889,fork TCP:127.0.0.1:8888
+
 ```
 
 ### Command-Line Options
