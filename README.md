@@ -45,6 +45,18 @@ python -m honeypot \
     --dashboard-port 8888 \
     --load-plugin honeypot.plugins.http_vuln_scanner \
     --load-plugin honeypot.plugins.socks5
+
+# With everything enabled and inside a network namespace
+ip netns exec nsudp screen -S llm_honeypot python3 -m honeypot \
+    --host 127.0.0.1 --port 23456 --dashboard-port 8888 \
+    --llm-model "unsloth/Qwen3.5-397B-A17B-GGUF:Q3_K_M" \
+    --load-plugin honeypot.plugins.http_netgear \
+    --load-plugin honeypot.plugins.http_vuln_scanner \
+    --load-plugin honeypot.plugins.tls_scanner \
+    --load-plugin honeypot.plugins.postgresql \
+    --load-plugin honeypot.plugins.socks5 \
+    --load-plugin honeypot.plugins.mikrotik_mndp \
+    --load-plugin honeypot.plugins.llm_fallback
 ```
 
 ### Command-Line Options
