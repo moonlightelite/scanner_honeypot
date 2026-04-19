@@ -1,4 +1,4 @@
-# Honeypot
+# Scanner Honeypot
 
 A transparent TCP honeypot system with protocol-aware plugin handlers, designed to attract and observe automated scanners and manual attackers.
 
